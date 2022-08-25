@@ -9,7 +9,7 @@ import java.util.Objects;
 @Service
 public class ProductBusiness {
 
-    public String getProductById(String id) throws BaseException {
+    public String getProductById(String id) throws ProductException {
         // TODO: get data from Database
         if (Objects.equals("1234", id)) {
             throw ProductException.notFound();

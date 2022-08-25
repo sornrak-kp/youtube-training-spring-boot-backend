@@ -17,7 +17,8 @@ public class ErrorAdviser {
         ErrorResponse response = new ErrorResponse();
         response.setError(e.getMessage());
         response.setStatus(HttpStatus.EXPECTATION_FAILED.value());
-        return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+        // return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(response);
     }
 
     @Data

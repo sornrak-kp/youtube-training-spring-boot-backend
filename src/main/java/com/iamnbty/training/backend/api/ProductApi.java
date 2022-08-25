@@ -2,6 +2,8 @@ package com.iamnbty.training.backend.api;
 
 import com.iamnbty.training.backend.business.ProductBusiness;
 import com.iamnbty.training.backend.exception.BaseException;
+import com.iamnbty.training.backend.exception.ProductException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +21,7 @@ public class ProductApi {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> getProductById(@PathVariable("id") String id) throws BaseException {
+    public ResponseEntity<String> getProductById(@PathVariable("id") String id) throws ProductException {
         String response = business.getProductById(id);
         return ResponseEntity.ok(response);
     }
