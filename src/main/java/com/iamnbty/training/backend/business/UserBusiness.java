@@ -2,7 +2,6 @@ package com.iamnbty.training.backend.business;
 
 import com.iamnbty.training.backend.entity.User;
 import com.iamnbty.training.backend.exception.BaseException;
-import com.iamnbty.training.backend.exception.FileException;
 import com.iamnbty.training.backend.exception.UserException;
 import com.iamnbty.training.backend.mapper.UserMapper;
 import com.iamnbty.training.backend.model.MLoginRequest;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Service

@@ -1,7 +1,6 @@
 package com.iamnbty.training.backend.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
