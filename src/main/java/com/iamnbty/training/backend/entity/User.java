@@ -14,6 +14,7 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true, length = 60)
     private String email;
 
+    @JsonIg
     @Column(nullable = false, length = 120)
     private String password;
 

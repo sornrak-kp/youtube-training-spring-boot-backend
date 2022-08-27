@@ -56,29 +56,6 @@ public class UserBusiness {
     }
 
     public String uploadProfilePicture(MultipartFile file) throws BaseException {
-        // validate file
-        if (file == null) {
-            // throw error
-            throw FileException.fileNull();
-        }
-
-        // validate size
-        if (file.getSize() > 1048576 * 2) {
-            // throw error
-            throw FileException.fileMaxSize();
-        }
-
-        String contentType = file.getContentType();
-        if (contentType == null) {
-            // throw error
-            throw FileException.unsupported();
-        }
-
-        List<String> supportedTypes = Arrays.asList("image/jpeg", "image/png");
-        if (!supportedTypes.contains(contentType)) {
-            // throw error (unsupport)
-            throw FileException.unsupported();
-        }
 
         // TODO: upload file File Storage (AWS S3, etc...)
         try {
