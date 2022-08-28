@@ -1,7 +1,6 @@
 package com.iamnbty.training.backend.service;
 
 import com.iamnbty.training.backend.entity.User;
-import com.iamnbty.training.backend.exception.BaseException;
 import com.iamnbty.training.backend.exception.UserException;
 import com.iamnbty.training.backend.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -54,7 +53,7 @@ public class UserService {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 
-    public User create(String email, String password, String name) throws BaseException {
+    public User create(String email, String password, String name) throws UserException {
         // validate
         if (Objects.isNull(email)) {
             throw UserException.createEmailNull();
