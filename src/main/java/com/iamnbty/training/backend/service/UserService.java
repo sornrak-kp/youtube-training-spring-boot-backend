@@ -1,7 +1,6 @@
 package com.iamnbty.training.backend.service;
 
 import com.iamnbty.training.backend.entity.User;
-import com.iamnbty.training.backend.exception.BaseException;
 import com.iamnbty.training.backend.exception.UserException;
 import com.iamnbty.training.backend.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -30,7 +30,7 @@ public class UserService {
         return repository.save(user);
     }
 
-    public User updateName(String id, String name) throws UserException {
+    public User updateName(UUID id, String name) throws UserException {
         Optional<User> opt = repository.findById(id);
         if (opt.isEmpty()) {
             throw UserException.notFound();
@@ -42,7 +42,7 @@ public class UserService {
         return repository.save(user);
     }
 
-    public void deleteById(String id) {
+    public void deleteById(UUID id) {
         repository.deleteById(id);
     }
 
@@ -50,7 +50,7 @@ public class UserService {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 
-    public User create(String email, String password, String name) throws BaseException {
+    public User create(String email, String password, String name) throws UserException {
         // validate
         if (Objects.isNull(email)) {
             throw UserException.createEmailNull();

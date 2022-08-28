@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "m_user")
@@ -14,7 +16,7 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true, length = 60)
     private String email;
 
-    @JsonIg
+    @JsonIgnore
     @Column(nullable = false, length = 120)
     private String password;
 

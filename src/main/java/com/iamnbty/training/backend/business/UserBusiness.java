@@ -1,7 +1,6 @@
 package com.iamnbty.training.backend.business;
 
 import com.iamnbty.training.backend.entity.User;
-import com.iamnbty.training.backend.exception.BaseException;
 import com.iamnbty.training.backend.exception.FileException;
 import com.iamnbty.training.backend.exception.UserException;
 import com.iamnbty.training.backend.mapper.UserMapper;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,7 +26,7 @@ public class UserBusiness {
         this.userMapper = userMapper;
     }
 
-    public String login(MLoginRequest request) throws BaseException {
+    public String login(MLoginRequest request) throws UserException {
         // validate request
 
         // verify database
@@ -49,13 +46,13 @@ public class UserBusiness {
         return token;
     }
 
-    public MRegisterResponse register(MRegisterRequest request) throws BaseException {
+    public MRegisterResponse register(MRegisterRequest request) throws UserException {
         User user = userService.create(request.getEmail(), request.getPassword(), request.getName());
 
         return userMapper.toRegisterResponse(user);
     }
 
-    public String uploadProfilePicture(MultipartFile file) throws BaseException {
+    public String uploadProfilePicture(MultipartFile file) throws FileException {
 
         // TODO: upload file File Storage (AWS S3, etc...)
         try {
